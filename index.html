@@ -2,185 +2,182 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Additional Custom CSS */
-        .navbar-link:hover {
-            text-decoration: underline;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .navbar-link:hover {
+      text-decoration: underline;
+      border: 1px solid #4a5568;
+      background-color: #2d3748;
+    }
 
-        .navbar-link:hover {
-            border: 1px solid #4a5568;
-            background-color: #2d3748;
-        }
+    .img-size {
+      max-width: 180px;
+      height: 250px;
+      margin-right: auto;
+      margin-left: auto;
+      padding-right: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease-in-out;
+    }
 
-        .img-size {
-            max-width: 180px; 
-            height: 250px;
-            margin-right: auto;
-            margin-left: auto;
-            padding-right: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out;
-        }
+    .img-size:hover {
+      transform: scale(1.1);
+    }
 
-        .img-size:hover {
-            transform: scale(1.1); /* Increased the scale on hover */
-        }
-        .span{
-            font-size: 30px;
-            font-style: bold;
-            color: rgb(219, 231, 227); 
-            font-family: fantasy;
-            font-weight: 300;
-           
-        }
-        .gif{
-            margin-top: 10px;
-            padding-top: 10px;
-        }
-    </style>
+    .span {
+      font-size: 20px;
+      color: rgb(219, 231, 227);
+      font-family: fantasy;
+      font-weight: 300;
+    }
+
+    .gif {
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+  </style>
 </head>
 
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
-    <!-- Header -->
-    <header class="bg-black border-b border-gray-200">
-        <div class="container mx-auto flex justify-between items-center py-4 px-6">
-            <div>
-                <h1 class="text-white text-2xl font-bold intro-text text-center">Abrar Rahman, <span class="span"> A passionate programmer</span> </h1>
-            </div>
-            <nav>
-                <ul class="flex space-x-8">
-                    <li class="btn">
-                        <a href="#" class="text-gray-300 navbar-link transition duration-300 ease-in-out hover:text-gray-100">Home</a>
-                    </li>
-                    <li class="btn">
-                        <a href="#projects" class="text-gray-300 navbar-link transition duration-300 ease-in-out hover:text-gray-100">Projects</a>
-                    </li>
-                    <li class="btn">
-                        <a href="#contact" class="text-gray-300 navbar-link transition duration-300 ease-in-out hover:text-gray-100">Contact</a>
-                    </li>
-                    <li class="btn">
-                        <a href="https://github.com/iamabrar14" class="text-gray-300 navbar-link transition duration-300 ease-in-out hover:text-gray-100">My GitHub</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <!-- Header -->
+  <header class="bg-black border-b border-gray-200">
+    <div class="container mx-auto flex flex-wrap justify-between items-center py-4 px-6">
+      <div class="w-full flex justify-between items-center lg:w-auto">
+        <h1 class="text-white text-2xl font-bold">Abrar Rahman, <span class="span">A passionate programmer</span></h1>
+        <button class="text-white lg:hidden focus:outline-none" id="nav-toggle">
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+            <path d="M4 5h16M4 12h16M4 19h16" />
+          </svg>
+        </button>
+      </div>
+      <nav class="w-full lg:flex lg:items-center lg:w-auto hidden" id="nav-content">
+        <ul class="flex flex-col lg:flex-row lg:space-x-8 space-y-2 lg:space-y-0 mt-4 lg:mt-0">
+          <li><a href="#" class="text-gray-300 navbar-link hover:text-white">Home</a></li>
+          <li><a href="#projects" class="text-gray-300 navbar-link hover:text-white">Projects</a></li>
+          <li><a href="#contact" class="text-gray-300 navbar-link hover:text-white">Contact</a></li>
+          <li><a href="https://github.com/iamabrar14" class="text-gray-300 navbar-link hover:text-white">My GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- 2nd sec -->
-    <section class="bg-gray-900 text-white py-20 px-6">
-        <div class="container mx-auto">
-            <div class="flex flex-col lg:flex-row items-center justify-between">
-                <img class="max-w-150px h-auto mr-auto mb-6 lg:mb-0 shadow-md transition-transform duration-300 ease-in-out img-size" src="2nd.jpg">
-                <div class="text-section max-w-[calc(100%-200px)] text-center lg:text-left">
-                    <h2 class="text-4xl font-bold mb-4">Welcome to My Portfolio</h2>
-                    <p class="text-lg leading-relaxed">Hi, I'm Abrar Rahman. Currently, I'm studying computer science and engineering. I'm passionate about coding, and I enjoy exploring new technologies. Football and music are my other hobbies. I love gaming.</p>
-                    <p class="text-lg leading-relaxed">Feel free to explore my projects and get in touch with me if you'd like to collaborate or discuss any ideas.</p>
-                </div>
-            </div>
+  <!-- Welcome Section -->
+  <section class="bg-gray-900 text-white py-20 px-6">
+    <div class="max-w-screen-lg mx-auto">
+      <div class="flex flex-col lg:flex-row items-center justify-between">
+        <img class="img-size mb-6 lg:mb-0" src="2nd.jpg" alt="Profile Photo" />
+        <div class="text-section text-center lg:text-left lg:ml-10">
+          <h2 class="text-4xl font-bold mb-4">Welcome to My Portfolio</h2>
+          <p class="text-lg leading-relaxed">Hi, I'm Abrar Rahman. Currently, I'm studying computer science and engineering. I'm passionate about coding, and I enjoy exploring new technologies. Football and music are my other hobbies. I love gaming.</p>
+          <p class="text-lg leading-relaxed mt-2">Feel free to explore my projects and get in touch with me if you'd like to collaborate or discuss any ideas.</p>
         </div>
-    </section>
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-6 bg-gray-100">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-semibold mb-8 text-center">Projects</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden project-box transition-shadow duration-300">
-                    <img class="w-full h-40 object-cover object-center" src="p1.png" alt="Project 1">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Project 1</h3>
-                        <p class="text-gray-700">E-Commerce webpage.</p>
-                    </div>
-                </div>
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden project-box transition-shadow duration-300">
-                    <img class="w-full h-40 object-cover object-center" src="p2.jpeg" alt="Project 2">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Project 2</h3>
-                        <p class="text-gray-700">Deposit/Withdraw System.</p>
-                    </div>
-                </div>
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden project-box transition-shadow duration-300">
-                    <img class="w-full h-40 object-cover object-center" src="p3.jpeg" alt="Project 3">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Project 3</h3>
-                        <p class="text-gray-700">Library Management System</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Education-->
-    <section id="education" class="py-20 px-6 bg-gray-200">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-semibold mb-8 text-center">Education Details</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- -->
-                <div class="bg-white shadow-lg rounded-lg p-6 transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Currently Studying BSc in CSE at</h3>
-                    <p class="text-gray-700">Shanto-Mariam University Of Creative Technology</p>
-                    <p class="text-gray-700">2022 - *current</p>
-                </div>
-                <!---->
-                <div class="bg-white shadow-lg rounded-lg p-6 transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">HSC from-</h3>
-                    <p class="text-gray-700">National Model College, Noakhali</p>
-                    <p class="text-gray-700">Passing year - 2020</p>
-                </div>
-                <!---->
-                <div class="bg-white shadow-lg rounded-lg p-6 transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">SSC from-</h3>
-                    <p class="text-gray-700">Arun Chandra High School</p>
-                    <p class="text-gray-700">Passing year - 2018</p>
-                </div>
-                <!---->
-                <div class="bg-white shadow-lg rounded-lg p-6 transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">KG School-</h3>
-                    <p class="text-gray-700">Nobarun Kinder Garten</p>
-                    <p class="text-gray-700">Year-2012</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="bg-gray-100 py-20 px-6">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-semibold mb-8">Contact Me</h2>
-            <h2 class="text-2xl,font-sans">Email: iamabrar14@gmail.com</h2>
-            <div class="max-w-md mx-auto">
-                <form>
-                    <div class="mb-4">
-                        <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
-                        <input type="text" id="name" name="name" class="w-full border-gray-300 rounded-md p-2">
-                    </div>
-                    <div class="mb-4">
-                        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
-                        <input type="email" id="email" name="email" class="w-full border-gray-300 rounded-md p-2">
-                    </div>
-                    <div class="mb-4">
-                        <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
-                        <textarea id="message" name="message" rows="4" class="w-full border-gray-300 rounded-md p-2"></textarea>
-                    </div>
-                    <button type="submit" class="bg-gray-900 text-white px-5 py-2 rounded-md hover:bg-gray-800">Send Message</button>
-                </form>
-                <img class="gif" src="https://camo.githubusercontent.com/c069a1e678dad7e96c512633dbea845302c373df7fb83726a7fd125fb1588df1/68747470733a2f2f696d616765732e73717561726573706163652d63646e2e636f6d2f636f6e74656e742f76312f3537363966633430316236333162616231616464623261622f313534313538303631313632342d5445363451474b524a4738535741495553374e532f636f64696e672d667265616b2e676966" alt="Live GIF">
-            </div>
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 px-6 bg-gray-100">
+    <div class="max-w-screen-lg mx-auto">
+      <h2 class="text-3xl font-semibold mb-8 text-center">Projects</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <img class="w-full h-40 object-cover" src="p1.png" alt="Project 1" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Project 1</h3>
+            <p class="text-gray-700">E-Commerce webpage.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 px-6">
-        <div class="text-center">
-            <p class="text-yellow-900">Abrar Rahman, all right reserved.</p>
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <img class="w-full h-40 object-cover" src="p2.jpeg" alt="Project 2" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Project 2</h3>
+            <p class="text-gray-700">Deposit/Withdraw System.</p>
+          </div>
         </div>
-    </footer>
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <img class="w-full h-40 object-cover" src="p3.jpeg" alt="Project 3" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Project 3</h3>
+            <p class="text-gray-700">Library Management System</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Education Section -->
+  <section id="education" class="py-20 px-6 bg-gray-200">
+    <div class="max-w-screen-lg mx-auto">
+      <h2 class="text-3xl font-semibold mb-8 text-center">Education Details</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white shadow-lg rounded-lg p-6 hover:scale-105 transition-transform">
+          <h3 class="text-xl font-semibold mb-2 text-gray-900">Currently Studying BSc in CSE at</h3>
+          <p class="text-gray-700">Shanto-Mariam University Of Creative Technology</p>
+          <p class="text-gray-700">2022 - Present</p>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6 hover:scale-105 transition-transform">
+          <h3 class="text-xl font-semibold mb-2 text-gray-900">HSC from</h3>
+          <p class="text-gray-700">National Model College, Noakhali</p>
+          <p class="text-gray-700">Passing Year - 2020</p>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6 hover:scale-105 transition-transform">
+          <h3 class="text-xl font-semibold mb-2 text-gray-900">SSC from</h3>
+          <p class="text-gray-700">Arun Chandra High School</p>
+          <p class="text-gray-700">Passing Year - 2018</p>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6 hover:scale-105 transition-transform">
+          <h3 class="text-xl font-semibold mb-2 text-gray-900">KG School</h3>
+          <p class="text-gray-700">Nobarun Kinder Garten</p>
+          <p class="text-gray-700">Year - 2012</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-gray-100 py-20 px-6">
+    <div class="max-w-screen-md mx-auto">
+      <h2 class="text-3xl font-semibold mb-6 text-center">Contact Me</h2>
+      <p class="text-center text-lg mb-4">Email: <a href="mailto:iamabrar14@gmail.com" class="text-blue-600">iamabrar14@gmail.com</a></p>
+      <form>
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+          <input type="text" id="name" name="name" class="w-full border-gray-300 rounded-md p-2" />
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+          <input type="email" id="email" name="email" class="w-full border-gray-300 rounded-md p-2" />
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+          <textarea id="message" name="message" rows="4" class="w-full border-gray-300 rounded-md p-2"></textarea>
+        </div>
+        <button type="submit" class="bg-gray-900 text-white px-5 py-2 rounded-md hover:bg-gray-800">Send Message</button>
+      </form>
+      <img class="gif mx-auto mt-8" src="https://camo.githubusercontent.com/c069a1e678dad7e96c512633dbea845302c373df7fb83726a7fd125fb1588df1/68747470733a2f2f696d616765732e73717561726573706163652d63646e2e636f6d2f636f6e74656e742f76312f3537363966633430316236333162616231616464623261622f313534313538303631313632342d5445363451474b524a4738535741495553374e532f636f64696e672d667265616b2e676966" alt="Live GIF" />
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6 px-6">
+    <div class="text-center">
+      <p class="text-yellow-500">© Abrar Rahman — All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JS for Navbar Toggle -->
+  <script>
+    const navToggle = document.getElementById("nav-toggle");
+    const navContent = document.getElementById("nav-content");
+    navToggle.addEventListener("click", () => {
+      navContent.classList.toggle("hidden");
+    });
+  </script>
 </body>
 
 </html>
