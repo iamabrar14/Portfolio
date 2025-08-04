@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Abrar Rahman - Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
     .active-link {
@@ -16,23 +17,52 @@
 <body class="font-sans text-gray-800">
 
   <!-- Header -->
-  <header class="flex justify-between items-center p-6 shadow-md bg-white sticky top-0 z-50">
-    <h1 class="text-xl font-bold">Abrar Rahman</h1>
-    <nav class="space-x-6" id="navbar">
-      <a href="#projects" class="nav-link hover:text-blue-500">Projects</a>
-      <a href="#about" class="nav-link hover:text-blue-500">About</a>
-      <a href="#about" class="nav-link hover:text-blue-500">Services</a>
-      <a href="#testimonials" class="nav-link hover:text-blue-500">Testimonial</a>
-    </nav>
-    <a href="https://github.com/iamabrar14" target="_blank" rel="noopener noreferrer" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800">
-      Contact Me
-    </a>
+  <header class="p-6 shadow-md bg-white sticky top-0 z-50" x-data="{ open: false }">
+    <div class="flex justify-between items-center">
+      <h1 class="text-xl font-bold">Abrar Rahman</h1>
+      <div class="md:hidden">
+        <button @click="open = !open" class="text-gray-700 focus:outline-none">
+          <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg x-show="open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <nav class="hidden md:flex space-x-6" id="navbar">
+        <a href="#projects" class="nav-link hover:text-blue-500">Projects</a>
+        <a href="#about" class="nav-link hover:text-blue-500">About</a>
+        <a href="#about" class="nav-link hover:text-blue-500">Services</a>
+        <a href="#testimonials" class="nav-link hover:text-blue-500">Testimonial</a>
+      </nav>
+      <a href="https://github.com/iamabrar14" target="_blank" rel="noopener noreferrer"
+        class="hidden md:inline-block bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800">
+        Contact Me
+      </a>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div x-show="open" class="md:hidden mt-4 space-y-4">
+      <a href="#projects" class="block nav-link hover:text-blue-500">Projects</a>
+      <a href="#about" class="block nav-link hover:text-blue-500">About</a>
+      <a href="#about" class="block nav-link hover:text-blue-500">Services</a>
+      <a href="#testimonials" class="block nav-link hover:text-blue-500">Testimonial</a>
+      <a href="https://github.com/iamabrar14" target="_blank" rel="noopener noreferrer"
+        class="block bg-black text-white px-4 py-2 rounded-full text-center hover:bg-gray-800">
+        Contact Me
+      </a>
+    </div>
   </header>
 
   <!-- Hero Section -->
   <section class="flex flex-col-reverse md:flex-row items-center justify-between px-6 py-12 md:px-24 bg-gray-100" data-aos="fade-up">
     <div class="md:w-1/2 space-y-4">
-      <h2 class="text-4xl font-bold leading-snug">
+      <h2 class="text-4xl sm:text-4xl font-bold leading-snug break-words">
         Hi, I’m Abrar Rahman<br />
         <span class="text-blue-500">Python Programmer. Clean. Fast. Reliable.</span>
       </h2>
@@ -47,8 +77,7 @@
   <!-- Projects Section -->
   <section id="projects" class="px-6 py-12 md:px-24 bg-white" data-aos="fade-up">
     <h3 class="text-2xl font-semibold mb-4">Explore My Recent Work</h3>
-    <p class="mb-10 text-gray-600">I’ve built a variety of applications with various frameworks </p>
-
+    <p class="mb-10 text-gray-600">I’ve built a variety of applications with various frameworks</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="bg-gray-50 rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition">
         <img src="p1.png" alt="Project 1" class="rounded-lg mb-4 w-full h-48 object-cover" />
@@ -86,7 +115,7 @@
           <li>📬 Open for freelance or full-time roles</li>
           <li>🧠 Learning AI/ML and Data Science</li>
         </ul>
-        <button class="mt-4 bg-black text-white px-5 py-2 rounded-full hover:bg-gray-800">Download CV</button>
+        <a href="cv.pdf" download class="mt-4 inline-block bg-black text-white px-5 py-2 rounded-full hover:bg-gray-800">Download CV</a>
       </div>
     </div>
   </section>
