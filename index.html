@@ -3,22 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abrar Rahman - Portfolio</title>
+  <title>Abrar Rahman - AI & ML Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
-    .active-link { font-weight: bold; color: #3b82f6; }
+    .active-link { font-weight: bold; color: #22d3ee; text-shadow: 0 0 8px rgba(34, 211, 238, 0.5); }
+    body {
+      background-color: #030712; /* gray-950 */
+      background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, transparent 70%);
+      color: #d1d5db; /* gray-300 */
+    }
+    .neon-border {
+      border: 1px solid #1f2937;
+      box-shadow: 0 0 15px rgba(34, 211, 238, 0.05);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .neon-border:hover {
+      border-color: #0891b2;
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+    }
+    .grid-bg {
+      background-size: 40px 40px;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    }
+    /* SVG Icons color override */
+    footer img { filter: invert(1) opacity(0.7); transition: filter 0.3s; }
+    footer a:hover img { filter: invert(0.8) sepia(1) saturate(5) hue-rotate(150deg); }
   </style>
 </head>
-<body class="font-sans text-gray-800">
+<body class="font-sans min-h-screen relative grid-bg">
 
   <!-- Header -->
-  <header class="p-6 shadow-md bg-white sticky top-0 z-50" x-data="{ open: false }">
-    <div class="flex justify-between items-center">
-      <h1 class="text-xl font-bold">Abrar Rahman</h1>
+  <header class="p-6 bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800" x-data="{ open: false }">
+    <div class="flex justify-between items-center max-w-7xl mx-auto">
+      <h1 class="text-xl font-bold text-white tracking-wider"><span class="text-cyan-400">&lt;</span>Abrar<span class="text-cyan-400">/&gt;</span></h1>
       <div class="md:hidden">
-        <button @click="open = !open" class="text-gray-700 focus:outline-none">
+        <button @click="open = !open" class="text-gray-300 focus:outline-none hover:text-cyan-400">
           <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -27,144 +49,284 @@
           </svg>
         </button>
       </div>
-      <nav class="hidden md:flex space-x-6" id="navbar">
-        <a href="#projects" class="nav-link hover:text-blue-500">Projects</a>
-        <a href="#about" class="nav-link hover:text-blue-500">About</a>
-        <a href="#about" class="nav-link hover:text-blue-500">Services</a>
-        <a href="#testimonials" class="nav-link hover:text-blue-500">Testimonial</a>
+      <nav class="hidden md:flex space-x-6 font-medium text-sm" id="navbar">
+        <a href="#projects" class="nav-link hover:text-cyan-400 transition-colors">Projects</a>
+        <a href="#about" class="nav-link hover:text-cyan-400 transition-colors">About</a>
+        <a href="#services" class="nav-link hover:text-cyan-400 transition-colors">Services</a>
+        <a href="#contact" class="nav-link hover:text-cyan-400 transition-colors">Contact</a>
       </nav>
       <a href="https://github.com/iamabrar14" target="_blank" rel="noopener noreferrer"
-         class="hidden md:inline-block bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800">
+         class="hidden md:inline-block bg-cyan-500 text-gray-950 px-5 py-2 rounded-full font-bold hover:bg-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] transition-all">
          Contact Me
       </a>
     </div>
 
     <!-- Mobile Nav -->
-    <div x-show="open" class="md:hidden mt-4 space-y-4">
-      <a href="#projects" class="block nav-link hover:text-blue-500">Projects</a>
-      <a href="#about" class="block nav-link hover:text-blue-500">About</a>
-      <a href="#about" class="block nav-link hover:text-blue-500">Services</a>
-      <a href="#testimonials" class="block nav-link hover:text-blue-500">Testimonial</a>
+    <div x-show="open" class="md:hidden mt-4 space-y-4 pb-4">
+      <a href="#projects" class="block nav-link hover:text-cyan-400 transition-colors">Projects</a>
+      <a href="#about" class="block nav-link hover:text-cyan-400 transition-colors">About</a>
+      <a href="#services" class="block nav-link hover:text-cyan-400 transition-colors">Services</a>
+      <a href="#contact" class="block nav-link hover:text-cyan-400 transition-colors">Contact</a>
       <a href="https://github.com/iamabrar14" target="_blank" rel="noopener noreferrer"
-         class="block bg-black text-white px-4 py-2 rounded-full text-center hover:bg-gray-800">
+         class="block bg-cyan-500 text-gray-950 px-4 py-2 rounded-full text-center font-bold hover:bg-cyan-400 transition-all">
          Contact Me
       </a>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="flex flex-col-reverse md:flex-row items-center justify-between px-6 py-12 md:px-24 bg-gray-100" data-aos="fade-up">
-    <div class="md:w-1/2 space-y-4">
-      <h2 class="text-4xl sm:text-4xl font-bold leading-snug break-words">
+  <section class="flex flex-col-reverse md:flex-row items-center justify-between px-6 py-20 md:px-24 max-w-7xl mx-auto" data-aos="fade-up">
+    <div class="md:w-1/2 space-y-6 relative z-10">
+      <div class="inline-block bg-gray-800 border border-gray-700 px-3 py-1 rounded-full text-xs font-mono text-cyan-400 mb-2 shadow-[0_0_10px_rgba(34,211,238,0.1)]">
+        SYSTEM.READY
+      </div>
+      <h2 class="text-4xl sm:text-5xl font-extrabold leading-snug break-words text-white">
         Hi, I’m Abrar Rahman<br />
-        <span class="text-blue-500">Python Programmer. Clean. Fast. Reliable.</span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">ML/AI & Python Dev.</span>
       </h2>
-      <p class="text-gray-600">I create various projects.</p>
-      <button class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800">Get In Touch</button>
+      <p class="text-gray-400 text-lg">Building intelligent solutions and robust architectures.</p>
+      <a href="https://facebook.com/imabrar14" target="_blank" rel="noopener noreferrer" class="inline-block bg-cyan-500 text-gray-950 px-8 py-3 rounded-full font-bold hover:bg-cyan-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.5)] transition-all">
+        Initialize Contact
+      </a>
     </div>
-    <div class="md:w-1/2 flex justify-center">
-      <img src="2nd.jpg" alt="Abrar Rahman"
-           class="rounded-xl shadow-md max-w-sm transition-transform duration-300 hover:scale-105" />
+    <div class="md:w-1/2 flex justify-center mb-12 md:mb-0 relative">
+      <!-- Glow effect behind image -->
+      <div class="absolute inset-0 bg-cyan-500 blur-[80px] opacity-20 rounded-full w-64 h-64 mx-auto"></div>
+      <img src="main.png" alt="Abrar Rahman"
+           class="rounded-2xl shadow-2xl border border-gray-700 w-56 md:w-72 transition-transform duration-500 hover:scale-105 relative z-10 grayscale hover:grayscale-0" />
     </div>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="px-6 py-12 md:px-24 bg-white" data-aos="fade-up">
-    <h3 class="text-2xl font-semibold mb-4">Explore My Recent Work</h3>
-    <p class="mb-10 text-gray-600">I’ve built a variety of applications with various frameworks</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-gray-50 rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition">
-        <img src="p1.png" alt="Project 1" class="rounded-lg mb-4 w-full h-48 object-cover" />
-        <p class="font-medium text-gray-800">Red Store – E-commerce page</p>
-      </div>
-      <div class="bg-gray-50 rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition">
-        <img src="p3.jpeg" alt="Project 2" class="rounded-lg mb-4 w-full h-48 object-cover" />
-        <p class="font-medium text-gray-800">Library Management System</p>
-      </div>
-      <div class="bg-gray-50 rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition">
-        <img src="your-image-4.jfif" alt="Project 3" class="rounded-lg mb-4 w-full h-48 object-cover" />
-        <p class="font-medium text-gray-800">Sukun – Your calm AI friend</p>
-      </div>
-      <div class="bg-gray-50 rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition">
-        <img src="utility.png" alt="Project 4" class="rounded-lg mb-4 w-full h-48 object-cover" />
-        <p class="font-medium text-gray-800">Utility Tool – Make your work smooth</p>
+  <section id="projects" class="px-6 py-20 md:px-24 bg-gray-900 border-y border-gray-800" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto">
+      <h3 class="text-3xl font-bold mb-4 text-white"><span class="text-cyan-400">01.</span> Neural Projects</h3>
+      <p class="mb-12 text-gray-400 font-mono text-sm">> Loading recent deployments...</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Project 1 -->
+        <div class="bg-gray-800/50 rounded-xl flex flex-col hover:-translate-y-2 transition-transform duration-300 overflow-hidden neon-border">
+          <img src="Base.png" alt="Golpokotha" class="w-full h-auto border-b border-gray-700 opacity-80 hover:opacity-100 transition-opacity" onerror="this.src='first.jpg'" />
+          <div class="p-6 flex-grow flex flex-col backdrop-blur-sm">
+            <h4 class="font-bold text-xl text-white mb-2">Golpokotha</h4>
+            <p class="text-sm text-gray-400 mb-4 flex-grow">A mini blog web app platform where users can create profiles, publish posts, and interact with other users.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="text-xs bg-cyan-900/30 text-cyan-400 px-2 py-1 rounded font-mono border border-cyan-800/50">Flask</span>
+              <span class="text-xs bg-indigo-900/30 text-indigo-400 px-2 py-1 rounded font-mono border border-indigo-800/50">Bootstrap</span>
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded font-mono border border-gray-700">CSS</span>
+            </div>
+            <a href="#" class="mt-auto text-cyan-400 font-bold text-sm hover:text-cyan-300 flex items-center group">
+              Execute View <span class="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="bg-gray-800/50 rounded-xl flex flex-col hover:-translate-y-2 transition-transform duration-300 overflow-hidden neon-border">
+          <img src="features.png" alt="Diabetes Detection" class="w-full h-auto border-b border-gray-700 opacity-80 hover:opacity-100 transition-opacity" onerror="this.src='p2.jpeg'" />
+          <div class="p-6 flex-grow flex flex-col backdrop-blur-sm">
+            <h4 class="font-bold text-xl text-white mb-2">Early Diabetes Detection</h4>
+            <p class="text-sm text-gray-400 mb-4 flex-grow">Predictive ML models using Logistic Regression and Decision Tree to predict diabetes early. Handled data preprocessing, feature analysis, and model evaluation.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="text-xs bg-emerald-900/30 text-emerald-400 px-2 py-1 rounded font-mono border border-emerald-800/50">Python</span>
+              <span class="text-xs bg-yellow-900/30 text-yellow-400 px-2 py-1 rounded font-mono border border-yellow-800/50">Scikit-learn</span>
+              <span class="text-xs bg-purple-900/30 text-purple-400 px-2 py-1 rounded font-mono border border-purple-800/50">ML</span>
+            </div>
+            <a href="#" class="mt-auto text-cyan-400 font-bold text-sm hover:text-cyan-300 flex items-center group">
+              Execute View <span class="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="bg-gray-800/50 rounded-xl flex flex-col hover:-translate-y-2 transition-transform duration-300 overflow-hidden neon-border">
+          <img src="p1.png" alt="Red Store" class="w-full h-auto border-b border-gray-700 opacity-80 hover:opacity-100 transition-opacity" />
+          <div class="p-6 flex-grow flex flex-col backdrop-blur-sm">
+            <h4 class="font-bold text-xl text-white mb-2">Red Store</h4>
+            <p class="text-sm text-gray-400 mb-4 flex-grow">An interactive and visually appealing E-commerce landing page.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded font-mono border border-gray-700">HTML</span>
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded font-mono border border-gray-700">CSS</span>
+            </div>
+            <a href="#" class="mt-auto text-cyan-400 font-bold text-sm hover:text-cyan-300 flex items-center group">
+              Execute View <span class="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="bg-gray-800/50 rounded-xl flex flex-col hover:-translate-y-2 transition-transform duration-300 overflow-hidden neon-border">
+          <img src="your-image-4.jfif" alt="Sukun" class="w-full h-auto border-b border-gray-700 opacity-80 hover:opacity-100 transition-opacity" />
+          <div class="p-6 flex-grow flex flex-col backdrop-blur-sm">
+            <h4 class="font-bold text-xl text-white mb-2">Sukun</h4>
+            <p class="text-sm text-gray-400 mb-4 flex-grow">Your calm AI friend. A supportive application powered by AI. Generates verse from Quran according to your mood</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded font-mono border border-blue-800/50">TinyLlama</span>
+              <span class="text-xs bg-emerald-900/30 text-emerald-400 px-2 py-1 rounded font-mono border border-emerald-800/50">Python</span>
+              <span class="text-xs bg-cyan-900/30 text-cyan-400 px-2 py-1 rounded font-mono border border-cyan-800/50">Flask</span>
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded font-mono border border-gray-700">HTML</span>
+              <span class="text-xs bg-indigo-900/30 text-indigo-400 px-2 py-1 rounded font-mono border border-indigo-800/50">Bootstrap</span>
+            </div>
+            <a href="#" class="mt-auto text-cyan-400 font-bold text-sm hover:text-cyan-300 flex items-center group">
+              Execute View <span class="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="bg-gray-800/50 rounded-xl flex flex-col hover:-translate-y-2 transition-transform duration-300 overflow-hidden neon-border">
+          <img src="utility.png" alt="Utility Tool" class="w-full h-auto border-b border-gray-700 opacity-80 hover:opacity-100 transition-opacity" />
+          <div class="p-6 flex-grow flex flex-col backdrop-blur-sm">
+            <h4 class="font-bold text-xl text-white mb-2">Utility Tool</h4>
+            <p class="text-sm text-gray-400 mb-4 flex-grow">A versatile application designed to make your daily work smoother.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="text-xs bg-emerald-900/30 text-emerald-400 px-2 py-1 rounded font-mono border border-emerald-800/50">Python</span>
+              <span class="text-xs bg-pink-900/30 text-pink-400 px-2 py-1 rounded font-mono border border-pink-800/50">Tkinter</span>
+            </div>
+            <a href="#" class="mt-auto text-cyan-400 font-bold text-sm hover:text-cyan-300 flex items-center group">
+              Execute View <span class="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="px-6 py-12 md:px-24 bg-gray-50" data-aos="fade-up">
-    <h3 class="text-2xl font-semibold mb-6">About Me</h3>
-    <div class="flex flex-col md:flex-row items-center gap-10">
-      <img src="2nd.jpg" alt="Abrar Rahman" class="w-full md:w-1/3 rounded-lg shadow" />
-      <div class="md:w-2/3">
-        <p class="mb-4">
-          I’m Abrar Rahman, a passionate programmer from Bangladesh. Currently I'm working on Flask and Learning AI/ML.
-          Python is my core programming language and I have knowledge on C, C++, HTML, CSS, and Computer Science Fundamentals
-          like Data Structures and Algorithms, Operating System.
-        </p>
-        <ul class="list-disc list-inside space-y-1 text-gray-700">
-          <li>🔧 Proficient in HTML, CSS, C++, Python, and Flask</li>
-          <li>🚀 Strong grasp on Python</li>
-          <li>📬 Open for freelance or full-time roles</li>
-          <li>🧠 Learning AI/ML and Data Science</li>
-        </ul>
-        <!-- Fixed CV download -->
-        <a href="Abrar_Rahman_CV.pdf" download="Abrar_Rahman_CV.pdf"
-           class="mt-4 inline-block bg-black text-white px-5 py-2 rounded-full hover:bg-gray-800">
-           Download CV
-        </a>
+  <section id="about" class="px-6 py-20 md:px-24" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto">
+      <h3 class="text-3xl font-bold mb-10 text-white"><span class="text-cyan-400">02.</span> About Architecture</h3>
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="w-full md:w-1/3 relative">
+          <div class="absolute inset-0 bg-blue-500 blur-[60px] opacity-20 rounded-full"></div>
+          <img src="main.png" alt="Abrar Rahman" class="rounded-xl shadow-2xl border border-gray-700 relative z-10 w-full object-cover aspect-square grayscale hover:grayscale-0 transition-all duration-500" />
+        </div>
+        <div class="md:w-2/3">
+          <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 shadow-lg">
+            <p class="mb-4 text-gray-300 leading-relaxed font-mono text-sm">
+              <span class="text-cyan-400">></span> I’m Abrar Rahman, a passionate programmer from Bangladesh. Currently I'm working on Flask and Django. I love to explore new things. <br>
+              <span class="text-cyan-400">></span> Machine learning and Deep Learning is my area of interest.<br>
+              <span class="text-cyan-400">></span> Python is my core programming language and I have knowledge on C, C++, HTML, CSS, and Computer Science Fundamentals like Data Structures and Algorithms, Database Management System and Operating System.
+            </p>
+            <div class="border-t border-gray-800 my-4"></div>
+            <ul class="space-y-2 text-gray-400 font-mono text-sm">
+              <li class="flex items-start"><span class="text-emerald-400 mr-2">[*]</span> Proficient in HTML, CSS, C++, Python, Flask, Django, MYSQL</li>
+              <li class="flex items-start"><span class="text-emerald-400 mr-2">[*]</span> Strong grasp on Python</li>
+              <li class="flex items-start"><span class="text-emerald-400 mr-2">[*]</span> Open for freelance or full-time roles</li>
+              <li class="flex items-start"><span class="text-cyan-400 mr-2">[~]</span> Focus: AI/ML and Data Science</li>
+            </ul>
+          </div>
+          <a href="Abrar_Rahman_CV.pdf" download="Abrar_Rahman_CV.pdf"
+             class="mt-8 inline-flex items-center bg-transparent border border-cyan-500 text-cyan-400 px-6 py-2 rounded-full hover:bg-cyan-500 hover:text-gray-950 font-bold transition-all shadow-[0_0_10px_rgba(34,211,238,0.1)] hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+             Download Specs (CV)
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="px-6 py-12 md:px-24 bg-gray-100" data-aos="fade-up">
-    <h3 class="text-2xl font-semibold mb-6 text-center">What People Say</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="bg-white p-6 rounded-lg shadow">
-        <p class="italic text-gray-700">“Abrar delivered the project on time with great communication and clean code. Highly recommended!”</p>
-        <p class="mt-4 font-semibold">– Client A</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <p class="italic text-gray-700">“Amazing design sense and development skills. Working with Abrar was a smooth experience.”</p>
-        <p class="mt-4 font-semibold">– Client B</p>
+  <!-- Services Section -->
+  <section id="services" class="px-6 py-20 md:px-24 bg-gray-900 border-y border-gray-800" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto">
+      <h3 class="text-3xl font-bold mb-12 text-center text-white"><span class="text-cyan-400">03.</span> Core Modules</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 bg-gray-800/50 rounded-2xl text-center neon-border backdrop-blur-sm group">
+          <div class="w-16 h-16 mx-auto bg-cyan-900/30 text-cyan-400 rounded-2xl flex items-center justify-center mb-6 border border-cyan-800/50 group-hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold mb-3 text-white">Web Development</h4>
+          <p class="text-gray-400 text-sm leading-relaxed">Building responsive and interactive web applications using HTML, CSS, Django and modern frameworks.</p>
+        </div>
+        <div class="p-8 bg-gray-800/50 rounded-2xl text-center neon-border backdrop-blur-sm group">
+          <div class="w-16 h-16 mx-auto bg-emerald-900/30 text-emerald-400 rounded-2xl flex items-center justify-center mb-6 border border-emerald-800/50 group-hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold mb-3 text-white">Backend & APIs</h4>
+          <p class="text-gray-400 text-sm leading-relaxed">Developing robust backend systems and RESTful APIs primarily using Python, Flask & Django.</p>
+        </div>
+        <div class="p-8 bg-gray-800/50 rounded-2xl text-center neon-border backdrop-blur-sm group">
+          <div class="w-16 h-16 mx-auto bg-purple-900/30 text-purple-400 rounded-2xl flex items-center justify-center mb-6 border border-purple-800/50 group-hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold mb-3 text-white">Machine Learning</h4>
+          <p class="text-gray-400 text-sm leading-relaxed">Implementing predictive models and data preprocessing pipelines using Python and Scikit-learn.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Final CTA Section -->
-  <section class="text-center px-6 py-12 md:px-24" data-aos="fade-up">
-    <h3 class="text-2xl font-semibold">Let’s Build Something Great</h3>
-    <p class="text-gray-600 my-4">Interested in working together? Let’s talk!</p>
+  <!-- Contact Section -->
+  <section id="contact" class="px-6 py-20 md:px-24 relative" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <h3 class="text-3xl font-bold text-white mb-4"><span class="text-cyan-400">04.</span> Establish Connection</h3>
+        <p class="text-gray-400 font-mono text-sm">> Awaiting input payload...</p>
+      </div>
+      
+      <div class="bg-gray-900 border border-gray-800 p-8 md:p-10 rounded-2xl shadow-[0_0_30px_rgba(34,211,238,0.05)] relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500 blur-[80px] opacity-20 rounded-full"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-500 blur-[80px] opacity-20 rounded-full"></div>
+
+        <form class="space-y-6 relative z-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-mono text-cyan-400 mb-2">str_name</label>
+              <input type="text" class="w-full px-4 py-3 bg-gray-950 border border-gray-700 text-white rounded-lg focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition font-mono text-sm" placeholder="John Doe">
+            </div>
+            <div>
+              <label class="block text-sm font-mono text-cyan-400 mb-2">str_email</label>
+              <input type="email" class="w-full px-4 py-3 bg-gray-950 border border-gray-700 text-white rounded-lg focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition font-mono text-sm" placeholder="john@example.com">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-mono text-cyan-400 mb-2">str_message</label>
+            <textarea rows="5" class="w-full px-4 py-3 bg-gray-950 border border-gray-700 text-white rounded-lg focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition font-mono text-sm resize-none" placeholder="Enter query here..."></textarea>
+          </div>
+          <button type="button" class="w-full bg-cyan-500 text-gray-950 font-bold py-4 rounded-lg hover:bg-cyan-400 transition-all shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:shadow-[0_0_25px_rgba(34,211,238,0.6)] uppercase tracking-wider text-sm">
+            Execute POST Request
+          </button>
+        </form>
+      </div>
+    </div>
   </section>
 
   <!-- Back to Top Button -->
-  <button id="backToTop" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hidden hover:bg-blue-700">↑</button>
+  <button id="backToTop" class="fixed bottom-6 right-6 bg-cyan-500 text-gray-950 p-3 rounded-full shadow-[0_0_15px_rgba(34,211,238,0.5)] hidden hover:bg-cyan-400 transition-all z-50">↑</button>
 
   <!-- Footer -->
-  <footer class="text-center p-6 bg-gray-100">
-    <p class="font-medium">Let’s Work Together</p>
-    <p class="text-blue-500 font-semibold">iamabrar14@gmail.com</p>
-    <p class="text-blue-500 font-semibold">Contact: 01302692041</p>
-    <div class="flex justify-center space-x-4 mt-4">
-      <a href="https://github.com/iamabrar14"><img src="github-icon.svg" alt="GitHub" class="h-6" /></a>
-      <a href="https://www.linkedin.com/in/iamabrar14"><img src="linkedin-icon.svg" alt="LinkedIn" class="h-6" /></a>
-      <a href="https://facebook.com/imabrar14"><img src="facebook-svgrepo.svg" alt="Facebook" class="h-6" /></a>
+  <footer class="text-center p-8 bg-gray-900 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto flex flex-col items-center">
+      <p class="font-mono text-gray-400 text-sm mb-2">> System Status: Online</p>
+      <p class="text-cyan-400 font-mono">iamabrar14@gmail.com</p>
+      <p class="text-cyan-400 font-mono mb-6">Contact: 01302692041</p>
+      <div class="flex justify-center space-x-6">
+        <a href="https://github.com/iamabrar14" class="hover:-translate-y-1 transition-transform"><img src="github-icon.svg" alt="GitHub" class="h-6" /></a>
+        <a href="https://www.linkedin.com/in/iamabrar14" class="hover:-translate-y-1 transition-transform"><img src="linkedin-icon.svg" alt="LinkedIn" class="h-6" /></a>
+        <a href="https://facebook.com/imabrar14" class="hover:-translate-y-1 transition-transform"><img src="facebook-svgrepo.svg" alt="Facebook" class="h-6" /></a>
+      </div>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({ duration: 800, once: true });
     // Highlight active link on scroll
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-link");
     window.addEventListener("scroll", () => {
       let current = "";
       sections.forEach(section => {
-        const sectionTop = section.offsetTop - 80;
+        const sectionTop = section.offsetTop - 120;
         if (scrollY >= sectionTop) current = section.getAttribute("id");
       });
       navLinks.forEach(link => {
@@ -175,7 +337,7 @@
       });
       // Back to top show/hide
       const topBtn = document.getElementById("backToTop");
-      if (window.scrollY > 300) topBtn.classList.remove("hidden");
+      if (window.scrollY > 400) topBtn.classList.remove("hidden");
       else topBtn.classList.add("hidden");
     });
     // Scroll to top
@@ -185,4 +347,3 @@
   </script>
 </body>
 </html>
-
