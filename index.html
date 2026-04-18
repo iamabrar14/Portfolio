@@ -8,7 +8,26 @@
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     .active-link { font-weight: bold; color: #22d3ee; text-shadow: 0 0 8px rgba(34, 211, 238, 0.5); }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #22d3ee;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after, .active-link::after {
+      width: 100%;
+    }
     body {
       background-color: #030712; /* gray-950 */
       background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, transparent 70%);
@@ -53,6 +72,7 @@
         <a href="#projects" class="nav-link hover:text-cyan-400 transition-colors">Projects</a>
         <a href="#about" class="nav-link hover:text-cyan-400 transition-colors">About</a>
         <a href="#services" class="nav-link hover:text-cyan-400 transition-colors">Services</a>
+        <a href="#education" class="nav-link hover:text-cyan-400 transition-colors">Education</a>
         <a href="#contact" class="nav-link hover:text-cyan-400 transition-colors">Contact</a>
       </nav>
       <a href="https://github.com/iamabrar14" target="_blank" rel="noopener noreferrer"
@@ -66,6 +86,7 @@
       <a href="#projects" class="block nav-link hover:text-cyan-400 transition-colors">Projects</a>
       <a href="#about" class="block nav-link hover:text-cyan-400 transition-colors">About</a>
       <a href="#services" class="block nav-link hover:text-cyan-400 transition-colors">Services</a>
+      <a href="#education" class="block nav-link hover:text-cyan-400 transition-colors">Education</a>
       <a href="#contact" class="block nav-link hover:text-cyan-400 transition-colors">Contact</a>
       <a href="https://github.com/iamabrar14" target="_blank" rel="noopener noreferrer"
          class="block bg-cyan-500 text-gray-950 px-4 py-2 rounded-full text-center font-bold hover:bg-cyan-400 transition-all">
@@ -80,9 +101,11 @@
       <div class="inline-block bg-gray-800 border border-gray-700 px-3 py-1 rounded-full text-xs font-mono text-cyan-400 mb-2 shadow-[0_0_10px_rgba(34,211,238,0.1)]">
         SYSTEM.READY
       </div>
-      <h2 class="text-4xl sm:text-5xl font-extrabold leading-snug break-words text-white">
-        Hi, I’m Abrar Rahman<br />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">ML/AI & Python Dev.</span>
+      <h2 class="text-4xl sm:text-5xl font-extrabold leading-snug break-words text-white"
+          x-data="{ text: '', fullText: 'Hi, I’m Abrar Rahman', i: 0 }"
+          x-init="let typing = setInterval(() => { if (i < fullText.length) { text += fullText[i]; i++; } else { clearInterval(typing); } }, 100)">
+        <span x-text="text"></span><span class="animate-pulse text-cyan-400">|</span><br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]">ML/AI & Python Dev.</span>
       </h2>
       <p class="text-gray-400 text-lg">Building intelligent solutions and robust architectures.</p>
       <a href="https://facebook.com/imabrar14" target="_blank" rel="noopener noreferrer" class="inline-block bg-cyan-500 text-gray-950 px-8 py-3 rounded-full font-bold hover:bg-cyan-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.5)] transition-all">
@@ -112,8 +135,9 @@
             <p class="text-sm text-gray-400 mb-4 flex-grow">A mini blog web app platform where users can create profiles, publish posts, and interact with other users.</p>
             <div class="flex flex-wrap gap-2 mb-6">
               <span class="text-xs bg-cyan-900/30 text-cyan-400 px-2 py-1 rounded font-mono border border-cyan-800/50">Flask</span>
-              <span class="text-xs bg-indigo-900/30 text-indigo-400 px-2 py-1 rounded font-mono border border-indigo-800/50">Bootstrap</span>
-              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded font-mono border border-gray-700">CSS</span>
+              <span class="text-xs bg-indigo-900/30 text-indigo-400 px-2 py-1 rounded font-mono border border-indigo-800/50">SQLAlchemy</span>
+              <span class="text-xs bg-yellow-900/30 text-yellow-400 px-2 py-1 rounded font-mono border border-indigo-800/50">Jinja Templating</span>
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded font-mono border border-gray-700">Bootstrap</span>
             </div>
             <a href="#" class="mt-auto text-cyan-400 font-bold text-sm hover:text-cyan-300 flex items-center group">
               Execute View <span class="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
@@ -129,6 +153,9 @@
             <p class="text-sm text-gray-400 mb-4 flex-grow">Predictive ML models using Logistic Regression and Decision Tree to predict diabetes early. Handled data preprocessing, feature analysis, and model evaluation.</p>
             <div class="flex flex-wrap gap-2 mb-6">
               <span class="text-xs bg-emerald-900/30 text-emerald-400 px-2 py-1 rounded font-mono border border-emerald-800/50">Python</span>
+              <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded font-mono border border-blue-800/50">Numpy</span>
+              <span class="text-xs bg-indigo-900/30 text-indigo-400 px-2 py-1 rounded font-mono border border-indigo-800/50">Pandas</span>
+              <span class="text-xs bg-red-900/30 text-red-400 px-2 py-1 rounded font-mono border border-red-800/50">Matplotlib</span>
               <span class="text-xs bg-yellow-900/30 text-yellow-400 px-2 py-1 rounded font-mono border border-yellow-800/50">Scikit-learn</span>
               <span class="text-xs bg-purple-900/30 text-purple-400 px-2 py-1 rounded font-mono border border-purple-800/50">ML</span>
             </div>
@@ -147,6 +174,7 @@
             <div class="flex flex-wrap gap-2 mb-6">
               <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded font-mono border border-gray-700">HTML</span>
               <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded font-mono border border-gray-700">CSS</span>
+              
             </div>
             <a href="#" class="mt-auto text-cyan-400 font-bold text-sm hover:text-cyan-300 flex items-center group">
               Execute View <span class="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
@@ -200,7 +228,7 @@
       <div class="flex flex-col md:flex-row items-center gap-12">
         <div class="w-full md:w-1/3 relative">
           <div class="absolute inset-0 bg-blue-500 blur-[60px] opacity-20 rounded-full"></div>
-          <img src="main.png" alt="Abrar Rahman" class="rounded-xl shadow-2xl border border-gray-700 relative z-10 w-full object-cover aspect-square grayscale hover:grayscale-0 transition-all duration-500" />
+          <img src="main2.jpg" alt="Abrar Rahman" class="rounded-xl shadow-2xl border border-gray-700 relative z-10 w-full object-cover aspect-square grayscale hover:grayscale-0 transition-all duration-500" />
         </div>
         <div class="md:w-2/3">
           <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 shadow-lg">
@@ -211,10 +239,10 @@
             </p>
             <div class="border-t border-gray-800 my-4"></div>
             <ul class="space-y-2 text-gray-400 font-mono text-sm">
-              <li class="flex items-start"><span class="text-emerald-400 mr-2">[*]</span> Proficient in HTML, CSS, C++, Python, Flask, Django, MYSQL</li>
+              <li class="flex items-start"><span class="text-emerald-400 mr-2">[*]</span> Proficient in HTML, CSS, C++, Python,Git & Github, Flask, Django, MYSQL</li>
               <li class="flex items-start"><span class="text-emerald-400 mr-2">[*]</span> Strong grasp on Python</li>
               <li class="flex items-start"><span class="text-emerald-400 mr-2">[*]</span> Open for freelance or full-time roles</li>
-              <li class="flex items-start"><span class="text-cyan-400 mr-2">[~]</span> Focus: AI/ML and Data Science</li>
+              <li class="flex items-start"><span class="text-cyan-400 mr-2">[~]</span> Focus: AI/ML, Data Science and Backend Development</li>
             </ul>
           </div>
           <a href="Abrar_Rahman_CV.pdf" download="Abrar_Rahman_CV.pdf"
@@ -263,11 +291,60 @@
     </div>
   </section>
 
+  <!-- Education Section -->
+  <section id="education" class="px-6 py-20 md:px-24" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto">
+      <h3 class="text-3xl font-bold mb-12 text-center text-white"><span class="text-cyan-400">04.</span> Education</h3>
+      <div class="flex flex-col space-y-6 max-w-4xl mx-auto">
+        
+        <!-- BSc -->
+        <div class="bg-gray-800/50 border border-gray-700 p-6 rounded-xl shadow-lg neon-border flex flex-col md:flex-row justify-between items-start md:items-center backdrop-blur-sm hover:-translate-y-1 transition-transform duration-300">
+          <div>
+            <h4 class="text-xl font-bold text-white mb-1">BSc in Computer Science & Engineering</h4>
+            <p class="text-gray-400 font-mono text-sm">Shanto-Mariam University of Creative Technology</p>
+          </div>
+          <div class="mt-4 md:mt-0 text-left md:text-right">
+            <span class="inline-block bg-cyan-900/30 text-cyan-400 px-3 py-1 rounded font-mono border border-cyan-800/50 text-sm mb-1">Passing Year:2026</span>
+            <p class="text-gray-300 font-mono text-sm">CGPA: 3.74/4.00</p>
+          </div>
+        </div>
+
+        <!-- HSC -->
+        <div class="bg-gray-800/50 border border-gray-700 p-6 rounded-xl shadow-lg neon-border flex flex-col md:flex-row justify-between items-start md:items-center backdrop-blur-sm hover:-translate-y-1 transition-transform duration-300">
+          <div>
+            <h4 class="text-xl font-bold text-white mb-1">Higher Secondary Certificate (HSC)</h4>
+            <p class="text-gray-400 font-mono text-sm">National Model College</p>
+            
+          </div>
+          <div class="mt-4 md:mt-0 text-left md:text-right">
+            <span class="inline-block bg-emerald-900/30 text-emerald-400 px-3 py-1 rounded font-mono border border-emerald-800/50 text-sm mb-1">Group: Science</span><span class="inline-block bg-cyan-900/30 text-cyan-400 px-3 py-1 rounded font-mono border border-cyan-800/50 text-sm mb-1">Passing Year: 2020</span>
+            <p class="text-gray-300 font-mono text-sm">GPA: 4.33/5</p>
+          </div>
+        </div>
+
+        <!-- SSC -->
+        <div class="bg-gray-800/50 border border-gray-700 p-6 rounded-xl shadow-lg neon-border flex flex-col md:flex-row justify-between items-start md:items-center backdrop-blur-sm hover:-translate-y-1 transition-transform duration-300">
+          <div>
+            <h4 class="text-xl font-bold text-white mb-1">Secondary School Certificate (SSC)</h4>
+            <p class="text-gray-400 font-mono text-sm">Arun Chandra High School</p>
+            
+          </div>
+          <div class="mt-4 md:mt-0 text-left md:text-right">
+            <span class="inline-block bg-purple-900/30 text-purple-400 px-3 py-1 rounded font-mono border border-purple-800/50 text-sm mb-1">Group: Science</span>
+            <span class="inline-block bg-cyan-900/30 text-cyan-400 px-3 py-1 rounded font-mono border border-cyan-800/50 text-sm mb-1">Passing Year: 2018</span>
+            <p class="text-gray-300 font-mono text-sm">GPA: 4.67/5</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
   <section id="contact" class="px-6 py-20 md:px-24 relative" data-aos="fade-up">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-10">
-        <h3 class="text-3xl font-bold text-white mb-4"><span class="text-cyan-400">04.</span> Establish Connection</h3>
+        <h3 class="text-3xl font-bold text-white mb-4"><span class="text-cyan-400">05.</span> Establish Connection</h3>
         <p class="text-gray-400 font-mono text-sm">> Awaiting input payload...</p>
       </div>
       
